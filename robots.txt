@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fortheloveofmy-life.netlify.app/sitemap.xml
