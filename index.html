@@ -1213,16 +1213,16 @@
         </div>
 
         <!-- BUTTERFLY RELEASE BUTTON - FIXED -->
-        <div style="text-align: center; margin: 2rem 0;">
-          <button class="menu-btn" onclick="event.preventDefault(); releaseButterflies();" style="background: #ffc2b3; padding: 1rem 2rem;">
-            <i class="fas fa-butterfly"></i> release butterflies for Adishree
+        <div style="text-align: center; margin: 2rem 0; position: relative; z-index: 100;">
+          <button class="menu-btn" onclick="releaseButterflies()" style="background: #ffc2b3; padding: 1rem 2rem; pointer-events: auto; cursor: pointer; position: relative; z-index: 100;">
+            <span style="font-size: 1.4rem; margin-right: 8px;">🦋</span> release butterflies for Adishree
           </button>
         </div>
 
         <!-- KISS ANIMATION BUTTON - FIXED -->
-        <div style="text-align: center; margin: 2rem 0;">
-          <button class="menu-btn" onclick="event.preventDefault(); createKissEffect();" style="background: #ffb6b9; padding: 1rem 2rem;">
-            <i class="fas fa-lips"></i> send a kiss
+        <div style="text-align: center; margin: 2rem 0; position: relative; z-index: 100;">
+          <button class="menu-btn" onclick="createKissEffect()" style="background: #ffb6b9; padding: 1rem 2rem; pointer-events: auto; cursor: pointer; position: relative; z-index: 100;">
+            <span style="font-size: 1.4rem; margin-right: 8px;">💋</span> send a kiss
           </button>
         </div>
 
@@ -2307,14 +2307,14 @@
     setInterval(addHeartToJar, 5000);
 
     // ===== BUTTERFLY RELEASE - FIXED =====
-    window.releaseButterflies = function releaseButterflies() {
+    window.releaseButterflies = function() {
       for (let i = 0; i < 8; i++) {
         setTimeout(() => {
-          const butterfly = document.createElement('i');
-          butterfly.classList.add('fas', 'fa-butterfly', 'butterfly');
+          const butterfly = document.createElement('div');
+          butterfly.innerHTML = '🦋';
+          butterfly.classList.add('butterfly');
           butterfly.style.left = Math.random() * 100 + '%';
           butterfly.style.bottom = '10%';
-          butterfly.style.color = `hsl(${Math.random() * 60 + 300}, 70%, 70%)`;
           butterfly.style.textShadow = '0 5px 15px rgba(0,0,0,0.2)'; // 3D shadow effect
           butterfly.style.transform = `rotate3d(1, 1, 1, ${Math.random() * 45}deg)`; // 3D tilt
           document.body.appendChild(butterfly);
@@ -2324,14 +2324,14 @@
     };
 
     // ===== KISS EFFECT - FIXED =====
-    window.createKissEffect = function createKissEffect() {
+    window.createKissEffect = function() {
       for (let i = 0; i < 5; i++) {
         setTimeout(() => {
-          const kiss = document.createElement('i');
-          kiss.classList.add('fas', 'fa-lips', 'kiss-effect');
+          const kiss = document.createElement('div');
+          kiss.innerHTML = '💋';
+          kiss.classList.add('kiss-effect');
           kiss.style.left = Math.random() * 100 + '%';
           kiss.style.top = Math.random() * 100 + '%';
-          kiss.style.color = '#ff6b8b';
           kiss.style.textShadow = '2px 2px 4px rgba(255, 100, 100, 0.3)'; // Soft 3D shadow
           kiss.style.filter = 'drop-shadow(0 0 5px rgba(255,192,203,0.8))'; // Glow
           document.body.appendChild(kiss);
@@ -2471,7 +2471,9 @@
       { title: "Song 2", src: "2.mp3" },
       { title: "Song 3", src: "3.mp3" },
       { title: "Song 4", src: "4.mp3" },
-      { title: "Song 5", src: "5.mp3" }
+      { title: "Song 5", src: "5.mp3" },
+      { title: "Song 6", src: "6.mp3" },
+      { title: "Song 7", src: "7.mp3" }
     ];
     let currentTrackIndex = 0;
 
