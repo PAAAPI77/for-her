@@ -1451,6 +1451,48 @@
     .worry-box {
       transition: all 1s ease;
     }
+
+    /* New Surprises Styles */
+    .surprise-card-new {
+      background: white;
+      border-radius: 30px;
+      padding: 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 1px solid #eee;
+      text-align: center;
+    }
+    .ticket-stub {
+      background: #fff8e1;
+      border: 2px dashed #ffb74d;
+      padding: 1.5rem;
+      margin: 1.5rem auto;
+      max-width: 400px;
+      position: relative;
+      font-family: 'Courier New', monospace;
+    }
+    .ticket-stub::before, .ticket-stub::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #fefaf7; /* match body bg */
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .ticket-stub::before { left: -15px; }
+    .ticket-stub::after { right: -15px; }
+    
+    .scroll-box {
+      max-height: 200px;
+      overflow-y: auto;
+      background: #f9fbe7;
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid #e6ee9c;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -1946,6 +1988,68 @@
         <div style="text-align: center; margin: 2rem 0;">
           <i class="fas fa-heart" style="font-size: 3rem; color: #b15757; cursor: pointer;" onclick="heartbeatSound()" id="heartbeatIcon"></i>
           <p>tap the heart to feel it beat</p>
+        </div>
+
+        <!-- NEW SURPRISES ADDED HERE -->
+        
+        <!-- 1. Bad Day Rescue Kit -->
+        <div class="surprise-card-new" style="background: #e0f7fa; border-color: #b2ebf2;">
+          <h3><i class="fas fa-first-aid"></i> The "Bad Day" Rescue Kit</h3>
+          <p style="margin: 1rem 0; font-size: 1.2rem;">My love, if the world feels heavy today, use this kit. I am right here with you.</p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="menu-btn" onclick="alert('🍫 Here is a virtual piece of dark chocolate. Imagine it melting on your tongue, sweet and rich. You deserve sweetness.')">🍫 Eat Chocolate</button>
+            <button class="menu-btn" onclick="alert('🤗 SQUEEEEEZE! This is a bone-crushing hug. I am not letting go until you smile.')">🤗 Big Hug</button>
+            <button class="menu-btn" onclick="alert('Joke: What did one ocean say to the other ocean? Nothing, they just waved! 🌊 (I know, I’m silly, but smile for me?)')">😂 Silly Joke</button>
+            <button class="menu-btn" onclick="alert('Reminder: You have survived 100% of your bad days. You are a warrior princess.')">💪 Reminder</button>
+          </div>
+        </div>
+
+        <!-- 2. Future Home Blueprint -->
+        <div class="surprise-card-new" style="background: #f3e5f5; border-color: #e1bee7;">
+          <h3><i class="fas fa-home"></i> Our Future Home</h3>
+          <p style="font-family: 'Playfair Display', serif; font-size: 1.3rem; line-height: 1.8; color: #4a148c;">
+            Close your eyes and walk with me. I see a small house with a big porch where we drink chai in the mornings. There is a garden you planted, full of white lilies and roses. Inside, there is a bookshelf that covers an entire wall, filled with your stories. The kitchen smells like spices and warmth. In the living room, there is a soft rug where we lie down and do absolutely nothing. It is quiet. It is ours. It is waiting for us.
+          </p>
+        </div>
+
+        <!-- 3. Golden Ticket -->
+        <div class="surprise-card-new">
+          <h3><i class="fas fa-ticket-alt"></i> A Golden Ticket</h3>
+          <div class="ticket-stub">
+            <h4 style="margin: 0; color: #d84315;">ADMIT ONE: TO SAHIL'S HEART</h4>
+            <p style="margin: 0.5rem 0; font-size: 0.9rem;">VALID: FOREVER & ALWAYS</p>
+            <p style="margin: 0.5rem 0; font-size: 0.9rem;">HOLDER: ADISHREE (MY PRINCESS)</p>
+            <hr style="border-top: 1px dashed #d84315; margin: 1rem 0;">
+            <p style="font-size: 1rem; line-height: 1.4;">Entitles the bearer to unlimited cuddles, unconditional forgiveness, late-night talks, and a lifetime of devotion. Non-transferable. Non-refundable.</p>
+          </div>
+        </div>
+
+        <!-- 4. Why I Stay Scroll -->
+        <div class="surprise-card-new" style="background: #e8f5e9; border-color: #c8e6c9;">
+          <h3><i class="fas fa-scroll"></i> Why I Stay</h3>
+          <p style="margin-bottom: 1rem;">Scroll to read why I'm never leaving...</p>
+          <div class="scroll-box">
+            <p>🌱 I stay because you feel like home.</p>
+            <p>🌱 I stay because your laugh is my favorite sound.</p>
+            <p>🌱 I stay because even in silence, we speak.</p>
+            <p>🌱 I stay because you challenge me to be better.</p>
+            <p>🌱 I stay because I've seen your soul, and it's beautiful.</p>
+            <p>🌱 I stay because a life without you is just existence, not living.</p>
+            <p>🌱 I stay because you are my best friend.</p>
+            <p>🌱 I stay because I promised, and I keep my promises.</p>
+            <p>🌱 I stay because I love who I am when I'm with you.</p>
+            <p>🌱 I stay because you are worth every mile of distance.</p>
+            <p>🌱 I stay because you are Adishree, and there is no one else like you.</p>
+          </div>
+        </div>
+
+        <!-- 5. A Star Named Us -->
+        <div class="surprise-card-new" style="background: #263238; color: white;">
+          <h3 style="color: #fff59d;"><i class="fas fa-star"></i> A Star Named 'Us'</h3>
+          <i class="fas fa-star glow-star" style="font-size: 3rem; color: #fff59d; margin: 1rem 0;"></i>
+          <p style="font-size: 1.2rem; line-height: 1.6;">
+            Look up at the night sky. I picked the brightest one and named it after us. It doesn't matter how dark the night gets, that star will always burn. Just like my love for you. It is constant, it is fiery, and it is guiding me home to you.
+          </p>
         </div>
       </div>
 
@@ -3332,10 +3436,9 @@
     // ===== BUCKET LIST LOGIC =====
     function loadBucketList() {
       let list = JSON.parse(localStorage.getItem('adi_bucket_list'));
-      
-      // Initialize with 100 items if empty
-      if (!list || list.length === 0) {
-        list = [
+
+      // Define the 100 items
+      const defaultItems = [
           { text: "Watch the Northern Lights together", completed: false },
           { text: "Cook a full 3-course meal together", completed: false },
           { text: "Go on a spontaneous road trip", completed: false },
@@ -3437,6 +3540,11 @@
           { text: "Go to a laser tag arena", completed: false },
           { text: "Grow old together", completed: false }
         ];
+      
+      // Initialize with 100 items if empty or if it seems like a fresh start
+      // We check if list is null or empty array.
+      if (!list || list.length === 0) {
+        list = defaultItems;
         localStorage.setItem('adi_bucket_list', JSON.stringify(list));
       }
 
