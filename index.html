@@ -1493,6 +1493,66 @@
       border: 1px solid #e6ee9c;
       text-align: left;
     }
+
+    /* Future Goals Vision Board */
+    .vision-board {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .vision-card {
+      background: white;
+      padding: 1.2rem;
+      border-radius: 2px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 260px;
+      text-align: center;
+      transform: rotate(var(--rotation));
+      transition: transform 0.3s ease;
+      border: 1px solid #eee;
+      position: relative;
+    }
+    .vision-card:hover {
+      transform: scale(1.05) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    .vision-img-placeholder {
+      width: 100%;
+      height: 180px;
+      background: #fdf0e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: #d7ccc8;
+      font-size: 3rem;
+    }
+    .vision-card h4 {
+      font-family: 'Playfair Display', serif;
+      color: #5d4037;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    .vision-card p {
+      font-size: 0.95rem;
+      color: #8d6e63;
+      line-height: 1.4;
+    }
+    .pin-tack {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ef9a9a;
+      position: absolute;
+      top: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
   </style>
 </head>
 <body>
@@ -1547,6 +1607,7 @@
           <button class="menu-btn" onclick="switchPage('alwaysDo'); event.preventDefault();"><i class="fas fa-infinity"></i> always do</button>
           <button class="menu-btn" onclick="switchPage('forgiveMe'); event.preventDefault();"><i class="fas fa-praying-hands"></i> forgive me</button>
           <button class="menu-btn" onclick="switchPage('worthIt'); event.preventDefault();"><i class="fas fa-anchor"></i> worth it</button>
+          <button class="menu-btn" onclick="switchPage('futureGoals'); event.preventDefault();"><i class="fas fa-bullseye"></i> future goals</button>
         </div>
       </div>
 
@@ -2935,6 +2996,52 @@
             Let's not give up on the magic we have built.<br>
             I love you, infinitely.
           </p>
+        </div>
+      </div>
+
+      <!-- FUTURE GOALS PAGE -->
+      <div id="futureGoals" class="page">
+        <h2><i class="fas fa-bullseye"></i> our future vision board</h2>
+        <div class="flower-break"></div>
+        <p style="text-align: center; font-size: 1.3rem; color: #8d6e63; margin-bottom: 2rem;">visualizing the beautiful life we are building together.</p>
+        
+        <div class="vision-board">
+          <div class="vision-card" style="--rotation: -2deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-home"></i></div>
+            <h4>Our Cozy Home</h4>
+            <p>A warm place filled with love, laughter, and the smell of coffee.</p>
+          </div>
+          <div class="vision-card" style="--rotation: 3deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-plane-departure"></i></div>
+            <h4>World Travelers</h4>
+            <p>Exploring new cities, tasting new foods, hand in hand.</p>
+          </div>
+          <div class="vision-card" style="--rotation: -1deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-blind"></i></div>
+            <h4>Growing Old Together</h4>
+            <p>Sitting on a porch, grey-haired, still holding hands.</p>
+          </div>
+          <div class="vision-card" style="--rotation: 2deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-baby-carriage"></i></div>
+            <h4>Building a Family</h4>
+            <p>Whether it's pets or kids, filling our home with life.</p>
+          </div>
+          <div class="vision-card" style="--rotation: -3deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-ring"></i></div>
+            <h4>Our Dream Wedding</h4>
+            <p>Celebrating our eternal promise with everyone we love.</p>
+          </div>
+           <div class="vision-card" style="--rotation: 1deg;">
+            <div class="pin-tack"></div>
+            <div class="vision-img-placeholder"><i class="fas fa-graduation-cap"></i></div>
+            <h4>Supporting Dreams</h4>
+            <p>Cheering each other on as we reach our individual goals.</p>
+          </div>
         </div>
       </div>
 
