@@ -1113,6 +1113,163 @@
       transform: scale(1.1);
       color: #ffcccc;
     }
+
+    /* Open When Envelopes (New Feature) */
+    .open-when-container {
+      background: #fff0f5;
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      border: 2px dashed #ffb7b2;
+      box-shadow: 0 10px 25px rgba(255, 182, 193, 0.15);
+    }
+    .envelopes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.8rem 0;
+    }
+    .envelope-btn {
+      background: #ffdac1;
+      border: none;
+      padding: 0.9rem 1.6rem;
+      border-radius: 30px;
+      color: #5e4b4b;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      font-size: 1.05rem;
+    }
+    .envelope-btn:hover {
+      transform: translateY(-3px);
+      background: #ffc8a2;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .envelope-message {
+      min-height: 80px;
+      font-size: 1.35rem;
+      color: #8a5a5a;
+      font-style: italic;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      margin-top: 1rem;
+    }
+    .envelope-message.show {
+      opacity: 1;
+    }
+
+    /* Calendar Styles */
+    .calendar-wrapper {
+      background: #fff;
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(200, 150, 150, 0.15);
+      max-width: 500px;
+      margin: 0 auto;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .calendar-header h3 {
+      margin: 0;
+      color: #8b5e5e;
+      font-size: 1.5rem;
+    }
+    .calendar-nav-btn {
+      background: #ffe4e1;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      color: #8b5e5e;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .calendar-nav-btn:hover {
+      background: #ffc0cb;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      text-align: center;
+    }
+    .calendar-day-name {
+      font-weight: 600;
+      color: #a07070;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .calendar-date {
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1;
+    }
+    .calendar-date:hover {
+      background: #fff0f5;
+    }
+    .calendar-date.empty {
+      cursor: default;
+      pointer-events: none;
+    }
+    .calendar-date.special-11 {
+      background: #ffe4e1;
+      color: #d65a5a;
+      font-weight: bold;
+      border: 2px solid #ffb7b2;
+    }
+    .calendar-date.start-date {
+      background: #ffb7b2;
+      color: white;
+      border-color: #ff9e99;
+      box-shadow: 0 0 10px rgba(255, 183, 178, 0.6);
+    }
+    .calendar-date.grand-date {
+      background: linear-gradient(135deg, #ffd700, #ffb7b2);
+      color: white;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+      animation: pulseGrand 2s infinite;
+      border: none;
+    }
+    @keyframes pulseGrand {
+      0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 215, 0, 0.6); }
+    }
+    .date-info {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #fff5f5;
+      border-radius: 15px;
+      text-align: center;
+      min-height: 80px;
+      color: #8b5e5e;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
   </style>
 </head>
 <body>
@@ -1161,6 +1318,7 @@
           <button class="menu-btn" onclick="switchPage('whatIdSay'); event.preventDefault();"><i class="fas fa-moon"></i> if you were here</button>
           <button class="menu-btn" onclick="switchPage('surprises'); event.preventDefault();"><i class="fas fa-gift"></i> surprises</button>
           <button class="menu-btn" onclick="switchPage('writeMessage'); event.preventDefault();"><i class="fas fa-pen-fancy"></i> write me</button>
+          <button class="menu-btn" onclick="switchPage('calendarPage'); event.preventDefault();"><i class="fas fa-calendar-alt"></i> our dates</button>
         </div>
       </div>
 
@@ -1557,15 +1715,16 @@
         <h2><i class="fas fa-gift"></i> extra sweet surprises</h2>
         <div class="flower-break"></div>
         
-        <!-- SECRET CODE UNLOCK -->
-        <div class="secret-code">
-          <h3><i class="fas fa-lock"></i> secret code</h3>
-          <p>enter our special code to unlock a hidden message</p>
-          <input type="text" class="code-input" id="secretCode" placeholder="SAHIL" maxlength="5" style="text-transform: uppercase;">
-          <button class="menu-btn" onclick="checkSecretCode()" style="margin-top: 1rem;">unlock</button>
-          <div id="hiddenSurprise" class="hidden-surprise">
-            <p style="font-size: 1.4rem; color: #a15555; margin-top: 1rem;">✨ Adishree, you are my always. forever starts now. ✨</p>
+        <!-- OPEN WHEN... (REPLACED SECRET CODE) -->
+        <div class="open-when-container">
+          <h3><i class="fas fa-envelope-open-text"></i> open when...</h3>
+          <p style="color: #8a6b6b; margin-top: 0.5rem;">tap an envelope whenever you need a reminder of us</p>
+          <div class="envelopes-grid">
+            <button class="envelope-btn" onclick="openEnvelope('lonely')">...you feel lonely</button>
+            <button class="envelope-btn" onclick="openEnvelope('scared')">...you're scared to trust</button>
+            <button class="envelope-btn" onclick="openEnvelope('miss')">...you miss us</button>
           </div>
+          <div id="envelopeMessage" class="envelope-message"></div>
         </div>
         
         <!-- LOVE LETTER UNFOLD -->
@@ -1573,9 +1732,17 @@
           <i class="fas fa-envelope" style="font-size: 3rem; color: #b58b8b;"></i>
           <p style="font-size: 1.3rem; margin-top: 0.5rem;">tap to open a love letter</p>
           <div id="letterContent" class="letter-content">
-            <p style="font-size: 1.4rem;">my dearest Adishree,</p>
-            <p style="margin: 1rem 0;">every word i write is a whisper of how much you mean to me. you are my home, my peace, my forever. i will never stop choosing you.</p>
-            <p style="margin-top: 1rem;">yours always, sahil ❤️</p>
+            <p style="font-size: 1.5rem; font-weight: 600; color: #8b5e5e;">My Dearest Adishree,</p>
+            <p style="margin: 1.2rem 0; line-height: 1.8;">
+              If I could rewrite the stars, I would align them all to point to you sooner. I know I haven't always been the shelter you needed, and for that, I am endlessly sorry. But I want you to know this: <strong>You are my safe place, and I want to be yours.</strong>
+            </p>
+            <p style="margin: 1.2rem 0; line-height: 1.8;">
+              When the world feels too loud, come to me. When you feel like you're too much or not enough, come to me. I don't just love the easy parts of you; I love the storms, the silence, and everything in between. You are not just a choice I made; you are the only reality I want to live in.
+            </p>
+            <p style="margin: 1.2rem 0; line-height: 1.8;">
+              Please, let me hold you again. Let me prove that "forever" isn't just a word—it's a promise I intend to keep every single day. Come home to my heart, because it has been empty without you.
+            </p>
+            <p style="margin-top: 1.5rem; font-weight: 600;">Yours eternally, Sahil ❤️</p>
           </div>
         </div>
         
@@ -2118,6 +2285,21 @@
         </div>
       </div>
 
+      <!-- CALENDAR PAGE -->
+      <div id="calendarPage" class="page">
+        <h2><i class="fas fa-calendar-check"></i> our special dates</h2>
+        <div class="flower-break"></div>
+        <div class="calendar-wrapper">
+          <div class="calendar-header">
+            <button class="calendar-nav-btn" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+            <h3 id="monthYearDisplay"></h3>
+            <button class="calendar-nav-btn" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="date-info" id="dateInfo">Tap a date to see memories...</div>
+        </div>
+      </div>
+
       <!-- FOOTER -->
       <footer>
         <i class="fas fa-heart" style="color: #c45a5a;"></i> 
@@ -2201,6 +2383,10 @@
           // Start music after user interaction
           if (audioPlayer && audioPlayer.paused) {
             playTrack();
+          }
+          // Initialize calendar
+          if (typeof renderCalendar === 'function') {
+            renderCalendar();
           }
         }, 1400);
       }
@@ -2527,12 +2713,23 @@
       loadTrack(currentTrackIndex);
     }
 
-    // ===== SECRET CODE UNLOCK =====
-    window.checkSecretCode = function() {
-      const code = document.getElementById('secretCode').value.toUpperCase();
-      if (code === 'SAHIL') {
-        document.getElementById('hiddenSurprise').classList.add('reveal');
+    // ===== OPEN WHEN ENVELOPES (NEW) =====
+    window.openEnvelope = function(type) {
+      const msgDiv = document.getElementById('envelopeMessage');
+      let text = "";
+      if (type === 'lonely') {
+        text = "Remember that you are the sun, and clouds are temporary. I am right here. Even in the silence, my heart is having a conversation with yours. You are never alone as long as I exist.";
+      } else if (type === 'scared') {
+        text = "I know the past hurts. But I am building a future where your heart never has to flinch again. Take my hand; we'll walk at your pace. I am not going anywhere.";
+      } else if (type === 'miss') {
+        text = "I miss us too. Every second. But we are not a memory, Adishree. We are a story that is still being written. The best chapters are coming. Close your eyes, I'm with you.";
       }
+      msgDiv.style.opacity = '0';
+      setTimeout(() => {
+        msgDiv.innerHTML = `<i class="fas fa-quote-left" style="font-size: 0.8em; opacity: 0.6;"></i> ${text} <i class="fas fa-quote-right" style="font-size: 0.8em; opacity: 0.6;"></i>`;
+        msgDiv.classList.add('show');
+        msgDiv.style.opacity = '1';
+      }, 300);
     };
 
     // ===== LOVE LETTER UNFOLD =====
@@ -2613,6 +2810,85 @@
     window.closeLightbox = function() {
       const lightbox = document.getElementById('lightbox');
       lightbox.classList.remove('active');
+    };
+
+    // ===== CALENDAR LOGIC =====
+    let currentCalendarDate = new Date();
+
+    window.renderCalendar = function() {
+      const grid = document.getElementById('calendarGrid');
+      const monthYear = document.getElementById('monthYearDisplay');
+      const dateInfo = document.getElementById('dateInfo');
+      
+      if (!grid) return;
+
+      grid.innerHTML = '';
+      const year = currentCalendarDate.getFullYear();
+      const month = currentCalendarDate.getMonth();
+      
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      monthYear.textContent = `${monthNames[month]} ${year}`;
+      
+      // Day names
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      days.forEach(day => {
+        const el = document.createElement('div');
+        el.className = 'calendar-day-name';
+        el.textContent = day;
+        grid.appendChild(el);
+      });
+      
+      // Empty slots
+      for (let i = 0; i < firstDay; i++) {
+        const el = document.createElement('div');
+        el.className = 'calendar-date empty';
+        grid.appendChild(el);
+      }
+      
+      // Days
+      for (let i = 1; i <= daysInMonth; i++) {
+        const el = document.createElement('div');
+        el.className = 'calendar-date';
+        el.textContent = i;
+        
+        // Check for special dates
+        if (i === 11) {
+          el.classList.add('special-11');
+          
+          if (month === 3 && year === 2023) { // April 2023
+            el.classList.add('start-date');
+            el.onclick = () => {
+               dateInfo.innerHTML = "❤️ <strong>April 11, 2023</strong><br>The day our beautiful journey began. The best day of my life.";
+               createLoveConfetti();
+            };
+          } else if (month === 3 && year === 2026) { // April 2026
+            el.classList.add('grand-date');
+            el.onclick = () => {
+               dateInfo.innerHTML = "✨ <strong>April 11, 2026</strong><br>3 Years of Us! A grand milestone for a grand love. I promise to make this day unforgettable.";
+               triggerVirtualHug();
+               createLoveConfetti();
+            };
+          } else {
+            el.onclick = () => {
+               dateInfo.innerHTML = `💕 <strong>11th of the Month</strong><br>Another month of loving you. Happy month-iversary, my love!`;
+            };
+          }
+        } else {
+          el.onclick = () => {
+            dateInfo.textContent = `${monthNames[month]} ${i}, ${year}`;
+          };
+        }
+        
+        grid.appendChild(el);
+      }
+    };
+
+    window.changeMonth = function(delta) {
+      currentCalendarDate.setMonth(currentCalendarDate.getMonth() + delta);
+      renderCalendar();
     };
   </script>
 
