@@ -1553,6 +1553,321 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
       z-index: 2;
     }
+
+    /* Love Thermometer */
+    .thermometer-container {
+      width: 80px;
+      height: 300px;
+      background: #fff;
+      border-radius: 40px;
+      border: 4px solid #ffcdd2;
+      position: relative;
+      margin: 0 auto;
+      padding: 5px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .thermometer-fill {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, #ff9a9e 0%, #ffecd2 100%);
+      border-radius: 30px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      animation: overflowPulse 2s infinite;
+    }
+    @keyframes overflowPulse {
+      0% { height: 95%; }
+      50% { height: 105%; box-shadow: 0 0 20px #ff9a9e; }
+      100% { height: 95%; }
+    }
+    .thermometer-label {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff8a80;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Love Arcade */
+    .arcade-box {
+      background: #222;
+      border-radius: 20px;
+      padding: 1rem;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      border: 4px solid #ff4081;
+    }
+    .arcade-target {
+      position: absolute;
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      animation: floatTarget 3s infinite linear;
+    }
+    @keyframes floatTarget {
+      0% { top: -10%; }
+      100% { top: 110%; }
+    }
+
+    /* Healing Journal */
+    .journal-book {
+      background: #fff9c4;
+      border: 1px solid #fbc02d;
+      border-radius: 10px 30px 30px 10px;
+      padding: 2rem;
+      min-height: 250px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .journal-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    /* Infinite Hug */
+    .hug-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 235, 238, 0.9);
+      z-index: 10005;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .hug-arm {
+      position: absolute;
+      width: 40%;
+      height: 150px;
+      background: #ffab91;
+      border-radius: 100px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 1s ease;
+    }
+    .hug-arm.left { left: -50%; border-radius: 0 100px 100px 0; }
+    .hug-arm.right { right: -50%; border-radius: 100px 0 0 100px; }
+    .hug-active .hug-arm.left { left: 0; }
+    .hug-active .hug-arm.right { right: 0; }
+    .hug-text {
+      z-index: 10006;
+      font-size: 2rem;
+      color: #bf360c;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s 0.5s;
+    }
+    .hug-active .hug-text { opacity: 1; }
+
+    /* Love Lottery */
+    .lottery-ticket {
+      background: #fff3e0;
+      border: 2px dashed #ff9800;
+      padding: 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .lottery-ticket:hover { transform: scale(1.02); }
+    .scratch-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #bdbdbd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #616161;
+      font-weight: bold;
+      transition: opacity 0.5s;
+    }
+    .lottery-ticket.scratched .scratch-overlay { opacity: 0; pointer-events: none; }
+
+    /* Promise Clock */
+    .promise-clock {
+      width: 250px;
+      height: 250px;
+      border: 8px solid #8d6e63;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+      background: white;
+    }
+    .clock-number {
+      position: absolute;
+      font-weight: bold;
+      color: #5d4037;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 50%;
+    }
+    .clock-number:hover { background: #d7ccc8; }
+    .clock-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 70%;
+      font-size: 0.9rem;
+      color: #8d6e63;
+      pointer-events: none;
+    }
+
+    /* Trust Meter */
+    .trust-meter-wrapper {
+      position: sticky;
+      top: 10px;
+      z-index: 900;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 10px 20px;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin: 0 auto 2rem;
+      max-width: 600px;
+      border: 1px solid #ffcdd2;
+    }
+    .trust-meter-label {
+      font-size: 0.9rem;
+      color: #8b5e5e;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .trust-progress-bg {
+      width: 100%;
+      height: 12px;
+      background: #ffe4e1;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .trust-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff9a9e, #ff6b6b);
+      width: 0%;
+      transition: width 0.2s ease-out;
+      border-radius: 10px;
+    }
+
+    /* Hidden Notes */
+    .hidden-note-icon {
+      position: fixed;
+      font-size: 1.4rem;
+      color: #d48d8d;
+      cursor: pointer;
+      z-index: 9999;
+      transition: transform 0.3s;
+      animation: floatNote 3s infinite ease-in-out;
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .hidden-note-icon:hover {
+      transform: scale(1.3);
+      color: #b71c1c;
+    }
+    @keyframes floatNote {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Love Compass */
+    .love-compass {
+      width: 150px;
+      height: 150px;
+      border: 4px solid #8d6e63;
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+      background: #fff8e1;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .compass-needle {
+      width: 4px;
+      height: 120px;
+      background: linear-gradient(to bottom, #ff5252 50%, #bdbdbd 50%);
+      position: absolute;
+      left: 50%;
+      top: 15px;
+      transform: translateX(-50%) rotate(0deg);
+      transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      border-radius: 2px;
+      animation: compassSeek 4s infinite ease-in-out;
+    }
+    @keyframes compassSeek {
+      0% { transform: translateX(-50%) rotate(-5deg); }
+      50% { transform: translateX(-50%) rotate(5deg); }
+      100% { transform: translateX(-50%) rotate(-5deg); }
+    }
+    .compass-target {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      color: #c62828;
+      font-weight: bold;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    /* Unlock Heart */
+    .unlock-heart-container {
+      text-align: center;
+      margin: 2rem 0;
+      background: #fff0f5;
+      padding: 2rem;
+      border-radius: 30px;
+      border: 2px dashed #ffb7b2;
+    }
+    .lock-icon {
+      font-size: 4rem;
+      color: #ef9a9a;
+      cursor: pointer;
+      transition: transform 0.5s, color 0.5s;
+    }
+    .lock-icon.unlocked {
+      transform: rotateY(180deg);
+      color: #66bb6a;
+    }
+    .unlock-message {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      color: #880e4f;
+      opacity: 0;
+      transition: opacity 1s;
+      height: 0;
+      overflow: hidden;
+    }
+    .unlock-message.visible {
+      opacity: 1;
+      height: auto;
+    }
   </style>
 </head>
 <body>
@@ -1619,6 +1934,14 @@
           <p style="font-size: 2rem; font-weight: 400; color: #7a5757;" class="calm-fade">because of you, Adishree.</p>
           <div class="flower-break calm-fade"></div>
         </header>
+
+        <!-- TRUST METER -->
+        <div class="trust-meter-wrapper">
+          <div class="trust-meter-label"><i class="fas fa-shoe-prints"></i> Rebuilding Trust: Step by Step</div>
+          <div class="trust-progress-bg">
+            <div class="trust-progress-bar" id="trustProgressBar"></div>
+          </div>
+        </div>
         
         <!-- LOVE METER -->
         <div class="love-meter-container">
@@ -2246,6 +2569,116 @@
           </div>
           <p>Tap the bottle to read the note inside.</p>
         </div>
+
+        <!-- 8. Unlock My Heart -->
+        <div class="unlock-heart-container">
+          <h3><i class="fas fa-key"></i> Unlock My Heart</h3>
+          <p style="margin-bottom: 1rem;">Only you have the key.</p>
+          <i class="fas fa-lock lock-icon" id="heartLock" onclick="unlockHeart()"></i>
+          <div class="unlock-message" id="heartUnlockMsg">
+            <br>
+            <i class="fas fa-heart-open"></i><br>
+            <strong>You hold the only key to my love and trust.</strong><br>
+            It has always been yours.
+          </div>
+        </div>
+
+        <!-- 9. Love Compass -->
+        <div class="surprise-card-new" style="background: #fff8e1; border-color: #ffe0b2;">
+          <h3><i class="fas fa-compass"></i> My Love Compass</h3>
+          <div style="margin: 2rem 0;">
+            <div class="love-compass">
+              <div class="compass-target">Adishree</div>
+              <div class="compass-needle"></div>
+            </div>
+          </div>
+          <p>No matter where I am, my heart always points to you.</p>
+        </div>
+
+        <!-- 10. Love Thermometer -->
+        <div class="surprise-card-new">
+          <h3><i class="fas fa-temperature-high"></i> Love Thermometer</h3>
+          <div style="height: 350px; display: flex; align-items: center; justify-content: center;">
+            <div class="thermometer-container">
+              <div class="thermometer-label">Overflowing!</div>
+              <div class="thermometer-fill"></div>
+            </div>
+          </div>
+          <p>My love for you is immeasurable.</p>
+        </div>
+
+        <!-- 11. Love Arcade -->
+        <div class="surprise-card-new" style="background: #212121; color: white;">
+          <h3 style="color: #ff4081;"><i class="fas fa-gamepad"></i> Love Arcade</h3>
+          <p>Catch 5 hearts to reveal a promise!</p>
+          <div class="arcade-box" id="arcadeGame">
+            <button class="menu-btn" onclick="startArcade()" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">Start Game</button>
+            <div id="arcadeScore" style="position: absolute; top: 10px; left: 10px;">Score: 0</div>
+          </div>
+          <div id="arcadePrize" style="margin-top: 1rem; color: #ff80ab; font-weight: bold; min-height: 1.5rem;"></div>
+        </div>
+
+        <!-- 12. Petal Messages -->
+        <div class="surprise-card-new" style="background: #fffde7; border-color: #fff59d;">
+          <h3><i class="fas fa-flower"></i> Petal Messages</h3>
+          <div style="font-size: 4rem; cursor: pointer; margin: 1rem 0;" onclick="dropPetal()">🌹</div>
+          <p>Tap the flower to catch a falling note.</p>
+          <div id="petalMessage" style="font-style: italic; color: #d81b60; min-height: 2rem; margin-top: 1rem;"></div>
+        </div>
+
+        <!-- 13. Healing Journal -->
+        <div class="surprise-card-new" style="background: #e8f5e9; border-color: #c8e6c9;">
+          <h3><i class="fas fa-book-open"></i> Healing Journal</h3>
+          <p style="margin-bottom: 1rem;">50 pages of apologies, lessons, and vows.</p>
+          <div class="journal-book">
+            <div id="journalContent" style="font-size: 1.3rem; color: #558b2f;">Page 1: I apologize for the moments I let my pride speak louder than my love.</div>
+          </div>
+          <div class="journal-nav">
+            <button class="menu-btn" onclick="prevJournalPage()"><i class="fas fa-arrow-left"></i> Prev</button>
+            <span id="journalPageNum" style="align-self: center; color: #558b2f;">1 / 50</span>
+            <button class="menu-btn" onclick="nextJournalPage()">Next <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- 14. Infinite Hug -->
+        <div class="surprise-card-new">
+          <h3><i class="fas fa-hands"></i> Infinite Hug</h3>
+          <p>Need a hug right now?</p>
+          <button class="menu-btn" onclick="triggerInfiniteHug()" style="background: #ffccbc; margin-top: 1rem;">Receive Hug</button>
+        </div>
+
+        <!-- 15. Love Lottery -->
+        <div class="surprise-card-new" style="background: #fff3e0; border-color: #ffe0b2;">
+          <h3><i class="fas fa-ticket-alt"></i> Love Lottery</h3>
+          <p style="margin-bottom: 1rem;">Draw a ticket for a sweet surprise.</p>
+          <div class="lottery-ticket" id="lotteryTicket" onclick="scratchTicket()">
+            <div class="scratch-overlay">Tap to Scratch</div>
+            <div id="lotteryPrize" style="font-size: 1.3rem; color: #e65100; font-weight: bold;">???</div>
+          </div>
+          <button class="menu-btn" onclick="resetTicket()" style="margin-top: 1rem; font-size: 0.9rem;">New Ticket</button>
+        </div>
+
+        <!-- 16. Promise Clock -->
+        <div class="surprise-card-new">
+          <h3><i class="fas fa-clock"></i> Promise Clock</h3>
+          <p style="margin-bottom: 1.5rem;">Every hour is a vow to you.</p>
+          <div class="promise-clock">
+            <div class="clock-center" id="clockText">Hover over a number</div>
+            <!-- Numbers positioned via JS or inline styles -->
+            <div class="clock-number" style="top: 10px; left: 50%; transform: translateX(-50%);" onmouseover="showClockVow(12)">12</div>
+            <div class="clock-number" style="top: 25%; right: 25px;" onmouseover="showClockVow(1)">1</div>
+            <div class="clock-number" style="top: 40%; right: 10px;" onmouseover="showClockVow(2)">2</div>
+            <div class="clock-number" style="top: 50%; right: 5px; transform: translateY(-50%);" onmouseover="showClockVow(3)">3</div>
+            <div class="clock-number" style="bottom: 40%; right: 10px;" onmouseover="showClockVow(4)">4</div>
+            <div class="clock-number" style="bottom: 25%; right: 25px;" onmouseover="showClockVow(5)">5</div>
+            <div class="clock-number" style="bottom: 10px; left: 50%; transform: translateX(-50%);" onmouseover="showClockVow(6)">6</div>
+            <div class="clock-number" style="bottom: 25%; left: 25px;" onmouseover="showClockVow(7)">7</div>
+            <div class="clock-number" style="bottom: 40%; left: 10px;" onmouseover="showClockVow(8)">8</div>
+            <div class="clock-number" style="top: 50%; left: 5px; transform: translateY(-50%);" onmouseover="showClockVow(9)">9</div>
+            <div class="clock-number" style="top: 40%; left: 10px;" onmouseover="showClockVow(10)">10</div>
+            <div class="clock-number" style="top: 25%; left: 25px;" onmouseover="showClockVow(11)">11</div>
+          </div>
+        </div>
       </div>
 
       <!-- ALL OTHER PAGES PRESERVED - APOLOGY, REASSURANCES, AFFIRMATIONS, QUOTES, GALLERY, POEM3, ENDLESSLOVE, TODAYNEED, YOUCANTELL, WAYSLEARNING, NOJUDGMENT, HOWTOHOLD, DONTEARN, WHATILOVE, WHENCANTBELIEVE, SANCTUARY, WHATIDSAY -->
@@ -2422,7 +2855,8 @@
           <p style="font-size: 1.5rem; margin-top: 1.8rem;"><i class="fas fa-feather"></i> my cutie pie, i never want to be the reason they close in sorrow. only in peace, only in sleep, only in joy.</p>
           <p style="font-size: 1.5rem; margin-top: 1rem;">i love you. your eyes open or closed, you are the most beautiful thing i've ever seen.</p>
         </div>
-        <div class="constellation-map" id="constellationMap"></div>
+        <div class="constellation-map" id="constellationMap" style="cursor: pointer;"></div>
+        <p style="text-align: center; font-size: 0.9rem; color: #8d6e63; margin-top: -1.5rem; margin-bottom: 1.5rem;">(tap the stars to see my promises of healing)</p>
         <div style="background: #ffebe7; border-radius: 60px; padding: 1.5rem 2rem; margin-top: 1.5rem;">
           <p><i class="fas fa-moon"></i> her eyes, even when closed, hold all the light i need.</p>
           <p><i class="fas fa-moon"></i> i wish you could see the tenderness i feel when you blink slowly, my sweetheart.</p>
@@ -3058,6 +3492,13 @@
     </div> <!-- end wrapper -->
   </div> <!-- end main-site -->
 
+  <!-- INFINITE HUG OVERLAY -->
+  <div id="infiniteHugOverlay" class="hug-overlay">
+    <div class="hug-arm left"></div>
+    <div class="hug-text">I'll hold you through every storm.</div>
+    <div class="hug-arm right"></div>
+  </div>
+
   <!-- VIRTUAL HUG OVERLAY -->
   <div id="virtualHugOverlay" class="virtual-hug-overlay">
     <div class="hug-content">
@@ -3124,6 +3565,7 @@
           initConstellation();
           startFloatingPetals();
           startWishLanterns();
+          startHiddenNotes();
           initTiltCards();
           // Start music after user interaction
           if (audioPlayer && audioPlayer.paused) {
@@ -3335,18 +3777,32 @@
     };
 
     // ===== CONSTELLATION MAP =====
+    const constellationMessages = [
+      "I have learned that your heart is fragile, and I will handle it with care.",
+      "I promise to be patient while you heal.",
+      "I will never let my ego be bigger than my love for you.",
+      "I have learned that listening is more important than being right.",
+      "I promise to validate your feelings, always.",
+      "I will never repeat the silence that hurt you.",
+      "I have learned that trust is earned in drops and lost in buckets. I am filling the bucket back up.",
+      "I promise consistency over intensity."
+    ];
+
     function initConstellation() {
       const map = document.getElementById('constellationMap');
       if (!map) return;
+      map.innerHTML = ''; // Clear existing
       const stars = [
         { x: 20, y: 30 }, { x: 40, y: 50 }, { x: 60, y: 20 }, { x: 80, y: 70 },
         { x: 30, y: 80 }, { x: 70, y: 40 }, { x: 50, y: 60 }, { x: 90, y: 50 }
       ];
-      stars.forEach(star => {
+      stars.forEach((star, index) => {
         const starEl = document.createElement('div');
         starEl.classList.add('star');
         starEl.style.left = star.x + '%';
         starEl.style.top = star.y + '%';
+        starEl.title = constellationMessages[index % constellationMessages.length];
+        starEl.onclick = () => alert("✨ " + constellationMessages[index % constellationMessages.length]);
         map.appendChild(starEl);
       });
     }
@@ -3884,6 +4340,253 @@
         msg.innerHTML = "";
       }, 3000);
     };
+
+    // ===== HIDDEN NOTES =====
+    const hiddenMessages = [
+      "I promise to guard your heart as if it were my own.",
+      "I promise to be transparent, even when it’s hard.",
+      "I promise to listen before I speak, and understand before I act.",
+      "I promise to never let silence replace honesty.",
+      "I promise to rebuild what I broke, one patient step at a time.",
+      "I promise to prove my love not just in words, but in actions every day.",
+      "I am no longer the man who hurt you; I am the man who learns from it.",
+      "My love is steady, my intentions are clear, and my heart is yours alone.",
+      "Every mistake taught me how precious your trust is — I will never waste it again.",
+      "I am committed to growth, because you deserve the best version of me.",
+      "Your forgiveness is not owed, but I will earn it with devotion.",
+      "If love is a flame, let me be the one who keeps it burning bright for you.",
+      "Trust me again, and I will build a world where your heart feels safe.",
+      "I ask not for perfection, only for a chance to prove my change.",
+      "Let me be the reason you believe in love’s healing power.",
+      "I will spend my days turning your doubts into comfort, your fears into peace.",
+      "I’ll spend my life proving I’ve changed.",
+      "You are my compass.",
+      "I am listening.",
+      "I am here to stay.",
+      "Your happiness is my priority.",
+      "I value us above all.",
+      "I am sorry, and I am changing.",
+      "Let's heal together.",
+      "You are safe with me.",
+      "I cherish you.",
+      "I am patient for you.",
+      "My heart beats for you.",
+      "I will never give up on us.",
+      "You are my forever."
+    ];
+
+    function startHiddenNotes() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const note = document.createElement('i');
+          note.className = 'fas fa-envelope hidden-note-icon';
+          note.style.left = Math.random() * 90 + 5 + '%';
+          note.style.top = Math.random() * 90 + 5 + '%';
+          note.onclick = function() {
+            alert("💌 " + hiddenMessages[i % hiddenMessages.length]);
+            this.style.display = 'none';
+          };
+          document.body.appendChild(note);
+        }, Math.random() * 60000); // Randomly over 1 minute
+      }
+    }
+
+    // ===== TRUST METER LOGIC =====
+    window.addEventListener('scroll', () => {
+      const home = document.getElementById('home');
+      if (home.classList.contains('active-page')) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        const bar = document.getElementById('trustProgressBar');
+        if(bar) bar.style.width = Math.min(scrollPercent, 100) + '%';
+      }
+    });
+
+    // ===== UNLOCK HEART =====
+    window.unlockHeart = function() {
+      document.getElementById('heartLock').classList.remove('fa-lock');
+      document.getElementById('heartLock').classList.add('fa-lock-open', 'unlocked');
+      document.getElementById('heartUnlockMsg').classList.add('visible');
+    };
+
+    // ===== HEALING JOURNAL LOGIC =====
+    const journalEntries = [
+      "I apologize for the moments I let my pride speak louder than my love.",
+      "I have learned that your silence is often a cry for understanding.",
+      "I vow to be your safe harbor, no matter how rough the seas get.",
+      "I am sorry for not holding your hand when you needed it most.",
+      "I learned that trust is rebuilt in the small, consistent moments.",
+      "I vow to listen to understand, not just to reply.",
+      "I apologize for the times I made you feel second best.",
+      "I have learned that your happiness is my own reflection.",
+      "I vow to never go to bed leaving you feeling unloved.",
+      "I am sorry for the words I spoke in anger.",
+      "I learned that patience is the truest form of love.",
+      "I vow to be the man who deserves your gentle heart.",
+      "I apologize for not seeing your pain sooner.",
+      "I have learned that you are my greatest teacher.",
+      "I vow to cherish every single day we have together.",
+      "I am sorry for the promises I delayed keeping.",
+      "I learned that love requires constant nurturing.",
+      "I vow to be transparent and honest, always.",
+      "I apologize for the times I was physically present but emotionally distant.",
+      "I have learned that your laughter is the best sound in the world.",
+      "I vow to support your dreams as if they were my own.",
+      "I am sorry for making you question your worth.",
+      "I learned that forgiveness is a gift I must earn.",
+      "I vow to be your biggest cheerleader.",
+      "I apologize for the tears I caused.",
+      "I have learned that we are stronger together.",
+      "I vow to hold you when you are falling apart.",
+      "I am sorry for not validating your feelings.",
+      "I learned that vulnerability is strength.",
+      "I vow to love you through all of life's changes.",
+      "I apologize for taking your presence for granted.",
+      "I have learned that you are my home.",
+      "I vow to keep dating you, even when we are old.",
+      "I am sorry for the times I was selfish.",
+      "I learned that a simple 'I love you' can change a day.",
+      "I vow to respect your boundaries.",
+      "I apologize for not being the rock you needed.",
+      "I have learned that your intuition is powerful.",
+      "I vow to make you smile every day.",
+      "I am sorry for the misunderstandings I didn't clear up.",
+      "I learned that kindness is more important than being right.",
+      "I vow to be present in the moment with you.",
+      "I apologize for the times I didn't defend us.",
+      "I have learned that you are my best friend.",
+      "I vow to grow with you, hand in hand.",
+      "I am sorry for any doubt I planted in your mind.",
+      "I learned that love is a choice I make every morning.",
+      "I vow to be the partner you can rely on.",
+      "I apologize for the past version of me.",
+      "I have learned that you are worth everything.",
+      "I vow to love you until my last breath."
+    ];
+    let currentJournalPage = 0;
+    function updateJournal() {
+      document.getElementById('journalContent').innerText = `Page ${currentJournalPage + 1}: ${journalEntries[currentJournalPage]}`;
+      document.getElementById('journalPageNum').innerText = `${currentJournalPage + 1} / ${journalEntries.length}`;
+    }
+    window.nextJournalPage = function() {
+      currentJournalPage = (currentJournalPage + 1) % journalEntries.length;
+      updateJournal();
+    };
+    window.prevJournalPage = function() {
+      currentJournalPage = (currentJournalPage - 1 + journalEntries.length) % journalEntries.length;
+      updateJournal();
+    };
+
+    // ===== LOVE LOTTERY LOGIC =====
+    const lotteryPrizes = [
+      "One lifetime of kisses", "A midnight drive with your favorite music", "Breakfast in bed whenever you want",
+      "A foot massage after a long day", "Being the big spoon tonight", "A handwritten love letter",
+      "A date night of your choosing", "Unlimited cuddles", "I cook your favorite meal",
+      "A day of 'Yes' to everything you ask", "A forehead kiss", "A slow dance in the living room",
+      "I do all the chores for a day", "A movie marathon of your picks", "A picnic under the stars",
+      "A listening ear for hours", "A surprise gift", "A walk on the beach",
+      "Holding hands everywhere we go", "A compliment every hour for a day", "I brush your hair",
+      "A warm bubble bath prepared for you", "A song sung by me (badly but lovingly)", "A piggyback ride",
+      "Ice cream date on me", "A promise kept forever", "My hoodie to keep",
+      "A secret shared", "A wish granted", "My heart, unconditionally"
+    ];
+    window.scratchTicket = function() {
+      const ticket = document.getElementById('lotteryTicket');
+      if (!ticket.classList.contains('scratched')) {
+        const prize = lotteryPrizes[Math.floor(Math.random() * lotteryPrizes.length)];
+        document.getElementById('lotteryPrize').innerText = prize;
+        ticket.classList.add('scratched');
+      }
+    };
+    window.resetTicket = function() {
+      document.getElementById('lotteryTicket').classList.remove('scratched');
+    };
+
+    // ===== PROMISE CLOCK LOGIC =====
+    const clockVows = {
+      1: "I choose to love you.", 2: "I choose to change.", 3: "I choose to be better.",
+      4: "I choose to care.", 5: "I choose to put in effort.", 6: "I choose to listen.",
+      7: "I choose to be patient.", 8: "I choose to be kind.", 9: "I choose to be honest.",
+      10: "I choose to protect you.", 11: "I choose to cherish you.", 12: "I choose US, always."
+    };
+    window.showClockVow = function(hour) {
+      document.getElementById('clockText').innerText = clockVows[hour];
+    };
+
+    // ===== INFINITE HUG LOGIC =====
+    window.triggerInfiniteHug = function() {
+      const overlay = document.getElementById('infiniteHugOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => overlay.classList.add('hug-active'), 100);
+      setTimeout(() => {
+        overlay.classList.remove('hug-active');
+        setTimeout(() => overlay.style.display = 'none', 1000);
+      }, 4000);
+    };
+
+    // ===== PETAL MESSAGES LOGIC =====
+    const petalNotes = ["I'll always choose you.", "You are my sunshine.", "My heart beats for you.", "You are worth it.", "I am here to stay."];
+    window.dropPetal = function() {
+      const msg = petalNotes[Math.floor(Math.random() * petalNotes.length)];
+      const el = document.getElementById('petalMessage');
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.innerText = `🌸 "${msg}"`;
+        el.style.opacity = 1;
+      }, 300);
+    };
+
+    // ===== LOVE ARCADE LOGIC =====
+    let arcadeScore = 0;
+    let arcadeActive = false;
+    window.startArcade = function() {
+      if (arcadeActive) return;
+      arcadeActive = true;
+      arcadeScore = 0;
+      document.getElementById('arcadeScore').innerText = "Score: 0";
+      document.getElementById('arcadePrize').innerText = "";
+      const box = document.getElementById('arcadeGame');
+      
+      const interval = setInterval(() => {
+        if (arcadeScore >= 5) {
+          clearInterval(interval);
+          arcadeActive = false;
+          document.getElementById('arcadePrize').innerText = "🏆 You won! Promise: I will never stop chasing you.";
+          return;
+        }
+        spawnArcadeHeart(box);
+      }, 800);
+    };
+
+    function spawnArcadeHeart(box) {
+      const heart = document.createElement('div');
+      heart.innerHTML = '❤️';
+      heart.style.position = 'absolute';
+      heart.style.left = Math.random() * 90 + '%';
+      heart.style.top = '-30px';
+      heart.style.fontSize = '1.5rem';
+      heart.style.cursor = 'pointer';
+      heart.style.transition = 'top 3s linear';
+      
+      heart.onclick = function() {
+        arcadeScore++;
+        document.getElementById('arcadeScore').innerText = "Score: " + arcadeScore;
+        this.remove();
+      };
+      
+      box.appendChild(heart);
+      
+      // Trigger animation
+      setTimeout(() => {
+        heart.style.top = '320px';
+      }, 50);
+      
+      // Cleanup
+      setTimeout(() => {
+        if(heart.parentNode) heart.remove();
+      }, 3000);
+    }
   </script>
 
   <!-- everything preserved, no truncation. all 60+ new promises added, butterfly and kiss animations fixed, all creative features included. -->
