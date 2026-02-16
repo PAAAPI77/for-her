@@ -1270,6 +1270,146 @@
       justify-content: center;
       flex-direction: column;
     }
+
+    /* Milestone Tracker */
+    .milestone-section {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .timer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .timer-box {
+      background: #fff0f5;
+      border: 2px solid #ffb7b2;
+      border-radius: 20px;
+      padding: 1rem;
+      min-width: 90px;
+      box-shadow: 0 5px 15px rgba(200, 150, 150, 0.1);
+    }
+    .timer-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #d65a5a;
+      font-family: 'Playfair Display', serif;
+    }
+    .timer-label {
+      font-size: 0.8rem;
+      color: #8b5e5e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .countdown-wrapper {
+      background: #fffaf0;
+      border-radius: 30px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      border: 1px dashed #e6c2c2;
+    }
+
+    /* Bucket List Styles */
+    .bucket-input-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .bucket-input {
+      padding: 1rem;
+      border-radius: 30px;
+      border: 2px solid #ffccbc;
+      width: 60%;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.1rem;
+    }
+    .bucket-add-btn {
+      background: #ffab91;
+      color: white;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .bucket-list-container {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .bucket-item {
+      background: #fff;
+      padding: 1rem 1.5rem;
+      margin-bottom: 0.8rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+    .bucket-item.completed {
+      background: #e0f2f1;
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+    .bucket-check {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #4db6ac;
+      margin-right: 10px;
+    }
+    .bucket-delete {
+      color: #ef9a9a;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    /* Breathing Circle Animation */
+    .breathing-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3rem 0;
+    }
+    .breath-circle {
+      width: 180px;
+      height: 180px;
+      background: #b2dfdb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00695c;
+      font-weight: bold;
+      font-size: 1.4rem;
+      box-shadow: 0 0 30px rgba(178, 223, 219, 0.6);
+      animation: breatheAnim 10s infinite ease-in-out;
+      position: relative;
+    }
+    .breath-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+    }
+    @keyframes breatheAnim {
+      0% { transform: scale(1); background: #b2dfdb; }
+      40% { transform: scale(1.6); background: #80cbc4; }
+      100% { transform: scale(1); background: #b2dfdb; }
+    }
+    .therapy-text-block {
+      background: #f1f8e9;
+      padding: 2.5rem;
+      border-radius: 40px;
+      margin-bottom: 2rem;
+      color: #33691e;
+      line-height: 1.9;
+      font-size: 1.25rem;
+      border-left: 8px solid #aed581;
+    }
   </style>
 </head>
 <body>
@@ -1319,6 +1459,10 @@
           <button class="menu-btn" onclick="switchPage('surprises'); event.preventDefault();"><i class="fas fa-gift"></i> surprises</button>
           <button class="menu-btn" onclick="switchPage('writeMessage'); event.preventDefault();"><i class="fas fa-pen-fancy"></i> write me</button>
           <button class="menu-btn" onclick="switchPage('calendarPage'); event.preventDefault();"><i class="fas fa-calendar-alt"></i> our dates</button>
+          <button class="menu-btn" onclick="switchPage('bucketList'); event.preventDefault();"><i class="fas fa-list-ul"></i> bucket list</button>
+          <button class="menu-btn" onclick="switchPage('therapyRoom'); event.preventDefault();"><i class="fas fa-spa"></i> therapy room</button>
+          <button class="menu-btn" onclick="switchPage('alwaysDo'); event.preventDefault();"><i class="fas fa-infinity"></i> always do</button>
+          <button class="menu-btn" onclick="switchPage('forgiveMe'); event.preventDefault();"><i class="fas fa-praying-hands"></i> forgive me</button>
         </div>
       </div>
 
@@ -2298,6 +2442,127 @@
           <div class="calendar-grid" id="calendarGrid"></div>
           <div class="date-info" id="dateInfo">Tap a date to see memories...</div>
         </div>
+
+        <!-- Milestone Tracker Section -->
+        <div class="milestone-section">
+          <h3><i class="fas fa-hourglass-half"></i> time we've been in love</h3>
+          <p style="color: #8a6b6b; margin-bottom: 1rem;">since April 11, 2023</p>
+          <div class="timer-grid" id="timeTogether">
+            <!-- JS will populate this -->
+          </div>
+
+          <div class="countdown-wrapper">
+            <h4 style="color: #a15555; margin-bottom: 1rem;"><i class="fas fa-stopwatch"></i> next special moments</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+              <div>
+                <p style="font-weight: 600; color: #704343; margin-bottom: 0.5rem;">next 11th date</p>
+                <div id="next11thTimer" style="font-size: 1.2rem; color: #d65a5a; font-weight: bold;"></div>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: #704343; margin-bottom: 0.5rem;">next anniversary</p>
+                <div id="nextAnniversaryTimer" style="font-size: 1.2rem; color: #d65a5a; font-weight: bold;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUCKET LIST PAGE -->
+      <div id="bucketList" class="page">
+        <h2><i class="fas fa-clipboard-list"></i> our bucket list</h2>
+        <div class="flower-break"></div>
+        <p style="text-align: center; margin-bottom: 2rem; font-size: 1.3rem; color: #8d6e63;">dreams we will chase, memories we will make. add them here, my love.</p>
+        
+        <div class="bucket-input-group">
+          <input type="text" id="bucketInput" class="bucket-input" placeholder="e.g., Watch northern lights together...">
+          <button class="bucket-add-btn" onclick="addBucketItem()"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        
+        <div id="bucketListContainer" class="bucket-list-container">
+          <!-- Items will be added here via JS -->
+        </div>
+      </div>
+
+      <!-- THERAPY ROOM PAGE -->
+      <div id="therapyRoom" class="page">
+        <h2><i class="fas fa-spa"></i> the healing room</h2>
+        <div class="flower-break"></div>
+        
+        <div class="therapy-text-block">
+          <p style="margin-bottom: 1.5rem;"><strong>My Dearest Adishree,</strong></p>
+          <p style="margin-bottom: 1.5rem;">If you are here, it might be because your heart feels heavy. Maybe I hurt you, maybe the world did, or maybe the distance feels like too much today. I want you to know: <strong>Pain is a visitor, but we are the home.</strong> We do not burn the house down just because it is raining outside.</p>
+          <p style="margin-bottom: 1.5rem;">In this relationship, we do not say "leave" when things get hard. We do not say "break up" when we are angry. Those words are not for us. We are built of stronger stuff. We acknowledge the hurt, we sit with it, we understand it, and then we heal it—together.</p>
+          <p>Take a moment. Breathe with me. I am holding your hand through the screen, through the miles. I am not letting go.</p>
+        </div>
+
+        <div class="breathing-wrapper">
+          <div class="breath-circle">
+            <div class="breath-text">Breathe</div>
+          </div>
+          <p style="margin-top: 1.5rem; color: #00695c;">Inhale... Hold... Exhale... You are safe.</p>
+        </div>
+
+        <div class="therapy-text-block" style="background: #e0f7fa; border-left-color: #4dd0e1; color: #006064;">
+          <p style="margin-bottom: 1.5rem;"><strong>Forgiveness is the bridge.</strong></p>
+          <p style="margin-bottom: 1.5rem;">When we hurt, our instinct is to protect ourselves by pulling away. But I am asking you to stay. Stay in the discomfort with me until it turns into understanding. I promise to listen to your pain without defensiveness. I promise to validate your feelings.</p>
+          <p>We are on the same team. Always. No matter what happened, it is solvable because our love is bigger than any mistake. I love you, I value you, and I am here to fix this.</p>
+        </div>
+      </div>
+
+      <!-- THINGS I WILL ALWAYS DO PAGE -->
+      <div id="alwaysDo" class="page">
+        <h2><i class="fas fa-infinity"></i> things i will always do for you</h2>
+        <div class="flower-break"></div>
+        <div style="background: #fff8e1; border-radius: 60px; padding: 3rem; color: #5d4037; line-height: 1.8;">
+          <p style="font-size: 1.4rem; margin-bottom: 2rem;"><strong>I will always value "Us" above everything else.</strong></p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            Adishree, this distance has been the hardest test, but it has also been my greatest teacher. It has changed me for the better. It taught me that I cannot take a single moment with you for granted. It taught me that your voice is my lifeline. I realized that I don't just want you; I <em>need</em> you in my life to feel complete.
+          </p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I will always communicate.</strong> I know silence can be louder than screaming, and it hurts more. I promise to break the silence. I promise to tell you when I am scared, when I am hurt, and when I am sorry. We need to talk to understand, not to win. There is no winning if you are losing.
+          </p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I will never let go.</strong> Whatever happened in the past, whatever misunderstandings we had, they are small compared to the love we share. Everything is solvable if we approach it with love, help, and understanding. I am committed to solving every puzzle, fixing every crack, and healing every wound.
+          </p>
+
+          <p style="font-size: 1.25rem;">
+            I really, truly love you. I value this relationship more than my pride, more than my comfort. You are my person, and I will always fight for you, never against you.
+          </p>
+        </div>
+      </div>
+
+      <!-- FORGIVE ME PAGE -->
+      <div id="forgiveMe" class="page">
+        <h2><i class="fas fa-praying-hands"></i> forgive me & see the new me</h2>
+        <div class="flower-break"></div>
+        <div style="background: #f3e5f5; border-radius: 60px; padding: 3rem; color: #4a148c; line-height: 1.8;">
+          <p style="font-size: 1.4rem; margin-bottom: 2rem;"><strong>Forgiveness is the key to our future.</strong></p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            My love, I am asking for your forgiveness not just to wipe the slate clean, but to open the door to better communication. When we forgive, we stop keeping score and start building bridges. I know I have made mistakes. I have done stupid things that I regret deeply. But I want you to know that I am not that person anymore.
+          </p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I am a changed man.</strong> I have learned from every stumble. I have grown from every argument. I am more confident now—confident in my love for you, confident in my ability to be the partner you deserve. I value you far too much to ever repeat the carelessness of the past.
+          </p>
+          
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            I value you a lot. You are not just my girlfriend; you are my best friend, my confidant, my future. I see your worth clearly, and I treat it with the reverence it deserves.
+          </p>
+
+          <p style="font-size: 1.25rem;">
+            Please, look at me now. See the effort, see the change, see the man who is standing before you (even virtually), ready to love you right. Let's leave the hurt behind and walk forward, hand in hand, into a brighter, lighter love.
+          </p>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <div style="background: white; padding: 1.5rem; border-radius: 30px; display: inline-block; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+            <p style="font-size: 1.3rem; color: #6a1b9a;">"I am not the mistakes I made. I am the love I give you now."</p>
+          </div>
+        </div>
       </div>
 
       <!-- FOOTER -->
@@ -2387,6 +2652,12 @@
           // Initialize calendar
           if (typeof renderCalendar === 'function') {
             renderCalendar();
+          }
+          if (typeof updateMilestones === 'function') {
+            updateMilestones();
+          }
+          if (typeof loadBucketList === 'function') {
+            loadBucketList();
           }
         }, 1400);
       }
@@ -2889,6 +3160,118 @@
     window.changeMonth = function(delta) {
       currentCalendarDate.setMonth(currentCalendarDate.getMonth() + delta);
       renderCalendar();
+    };
+
+    // ===== MILESTONE TRACKER =====
+    window.updateMilestones = function() {
+      const startDate = new Date('2023-04-11T00:00:00');
+      const now = new Date();
+      
+      // Time Together
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const timeTogetherEl = document.getElementById('timeTogether');
+      if (timeTogetherEl) {
+        timeTogetherEl.innerHTML = `
+          <div class="timer-box"><div class="timer-number">${days}</div><div class="timer-label">days</div></div>
+          <div class="timer-box"><div class="timer-number">${hours}</div><div class="timer-label">hours</div></div>
+          <div class="timer-box"><div class="timer-number">${minutes}</div><div class="timer-label">mins</div></div>
+          <div class="timer-box"><div class="timer-number">${seconds}</div><div class="timer-label">secs</div></div>
+        `;
+      }
+
+      // Next 11th
+      const next11thEl = document.getElementById('next11thTimer');
+      if (next11thEl) {
+        if (now.getDate() === 11) {
+           next11thEl.innerHTML = "🎉 Today is the 11th! 🎉";
+        } else {
+           let next11th = new Date(now.getFullYear(), now.getMonth(), 11);
+           if (now.getDate() > 11) {
+             next11th.setMonth(next11th.getMonth() + 1);
+           }
+           const diff11 = next11th - now;
+           const d11 = Math.floor(diff11 / (1000 * 60 * 60 * 24));
+           const h11 = Math.floor((diff11 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+           const m11 = Math.floor((diff11 % (1000 * 60 * 60)) / (1000 * 60));
+           const s11 = Math.floor((diff11 % (1000 * 60)) / 1000);
+           next11thEl.innerText = `${d11}d ${h11}h ${m11}m ${s11}s`;
+        }
+      }
+
+      // Next Anniversary (April 11)
+      const nextAnnivEl = document.getElementById('nextAnniversaryTimer');
+      if (nextAnnivEl) {
+        if (now.getMonth() === 3 && now.getDate() === 11) { // April is 3
+           nextAnnivEl.innerHTML = "💖 Happy Anniversary! 💖";
+        } else {
+           let nextAnniv = new Date(now.getFullYear(), 3, 11);
+           if (now > nextAnniv) {
+             nextAnniv.setFullYear(nextAnniv.getFullYear() + 1);
+           }
+           const diffAnniv = nextAnniv - now;
+           const dA = Math.floor(diffAnniv / (1000 * 60 * 60 * 24));
+           const hA = Math.floor((diffAnniv % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+           const mA = Math.floor((diffAnniv % (1000 * 60 * 60)) / (1000 * 60));
+           const sA = Math.floor((diffAnniv % (1000 * 60)) / 1000);
+           nextAnnivEl.innerText = `${dA}d ${hA}h ${mA}m ${sA}s`;
+        }
+      }
+    };
+    
+    setInterval(updateMilestones, 1000);
+
+    // ===== BUCKET LIST LOGIC =====
+    function loadBucketList() {
+      const list = JSON.parse(localStorage.getItem('adi_bucket_list')) || [];
+      const container = document.getElementById('bucketListContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      list.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = `bucket-item ${item.completed ? 'completed' : ''}`;
+        div.innerHTML = `
+          <div style="display:flex; align-items:center;">
+            <i class="fas ${item.completed ? 'fa-check-square' : 'fa-square'} bucket-check" onclick="toggleBucket(${index})"></i>
+            <span>${item.text}</span>
+          </div>
+          <i class="fas fa-trash bucket-delete" onclick="deleteBucket(${index})"></i>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    window.addBucketItem = function() {
+      const input = document.getElementById('bucketInput');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      const list = JSON.parse(localStorage.getItem('adi_bucket_list')) || [];
+      list.push({ text: text, completed: false });
+      localStorage.setItem('adi_bucket_list', JSON.stringify(list));
+      input.value = '';
+      loadBucketList();
+    };
+
+    window.toggleBucket = function(index) {
+      const list = JSON.parse(localStorage.getItem('adi_bucket_list')) || [];
+      if (list[index]) {
+        list[index].completed = !list[index].completed;
+        localStorage.setItem('adi_bucket_list', JSON.stringify(list));
+        loadBucketList();
+      }
+    };
+
+    window.deleteBucket = function(index) {
+      const list = JSON.parse(localStorage.getItem('adi_bucket_list')) || [];
+      list.splice(index, 1);
+      localStorage.setItem('adi_bucket_list', JSON.stringify(list));
+      loadBucketList();
     };
   </script>
 
