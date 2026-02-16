@@ -2665,18 +2665,18 @@
           <div class="promise-clock">
             <div class="clock-center" id="clockText">Hover over a number</div>
             <!-- Numbers positioned via JS or inline styles -->
-            <div class="clock-number" style="top: 10px; left: 50%; transform: translateX(-50%);" onmouseover="showClockVow(12)">12</div>
-            <div class="clock-number" style="top: 25%; right: 25px;" onmouseover="showClockVow(1)">1</div>
-            <div class="clock-number" style="top: 40%; right: 10px;" onmouseover="showClockVow(2)">2</div>
-            <div class="clock-number" style="top: 50%; right: 5px; transform: translateY(-50%);" onmouseover="showClockVow(3)">3</div>
-            <div class="clock-number" style="bottom: 40%; right: 10px;" onmouseover="showClockVow(4)">4</div>
-            <div class="clock-number" style="bottom: 25%; right: 25px;" onmouseover="showClockVow(5)">5</div>
-            <div class="clock-number" style="bottom: 10px; left: 50%; transform: translateX(-50%);" onmouseover="showClockVow(6)">6</div>
-            <div class="clock-number" style="bottom: 25%; left: 25px;" onmouseover="showClockVow(7)">7</div>
-            <div class="clock-number" style="bottom: 40%; left: 10px;" onmouseover="showClockVow(8)">8</div>
-            <div class="clock-number" style="top: 50%; left: 5px; transform: translateY(-50%);" onmouseover="showClockVow(9)">9</div>
-            <div class="clock-number" style="top: 40%; left: 10px;" onmouseover="showClockVow(10)">10</div>
-            <div class="clock-number" style="top: 25%; left: 25px;" onmouseover="showClockVow(11)">11</div>
+            <div class="clock-number" style="top: 10%; left: 50%; transform: translate(-50%, -50%);" onmouseover="showClockVow(12)">12</div>
+            <div class="clock-number" style="top: 15.4%; left: 70%; transform: translate(-50%, -50%);" onmouseover="showClockVow(1)">1</div>
+            <div class="clock-number" style="top: 30%; left: 84.6%; transform: translate(-50%, -50%);" onmouseover="showClockVow(2)">2</div>
+            <div class="clock-number" style="top: 50%; left: 90%; transform: translate(-50%, -50%);" onmouseover="showClockVow(3)">3</div>
+            <div class="clock-number" style="top: 70%; left: 84.6%; transform: translate(-50%, -50%);" onmouseover="showClockVow(4)">4</div>
+            <div class="clock-number" style="top: 84.6%; left: 70%; transform: translate(-50%, -50%);" onmouseover="showClockVow(5)">5</div>
+            <div class="clock-number" style="top: 90%; left: 50%; transform: translate(-50%, -50%);" onmouseover="showClockVow(6)">6</div>
+            <div class="clock-number" style="top: 84.6%; left: 30%; transform: translate(-50%, -50%);" onmouseover="showClockVow(7)">7</div>
+            <div class="clock-number" style="top: 70%; left: 15.4%; transform: translate(-50%, -50%);" onmouseover="showClockVow(8)">8</div>
+            <div class="clock-number" style="top: 50%; left: 10%; transform: translate(-50%, -50%);" onmouseover="showClockVow(9)">9</div>
+            <div class="clock-number" style="top: 30%; left: 15.4%; transform: translate(-50%, -50%);" onmouseover="showClockVow(10)">10</div>
+            <div class="clock-number" style="top: 15.4%; left: 30%; transform: translate(-50%, -50%);" onmouseover="showClockVow(11)">11</div>
           </div>
         </div>
       </div>
@@ -4375,20 +4375,26 @@
       "You are my forever."
     ];
 
+    let hiddenNoteIndex = 0;
+
+    function spawnNextNote() {
+      const note = document.createElement('i');
+      note.className = 'fas fa-envelope hidden-note-icon';
+      note.style.left = Math.random() * 80 + 10 + '%';
+      note.style.top = Math.random() * 80 + 10 + '%';
+      
+      note.onclick = function() {
+        alert("💌 " + hiddenMessages[hiddenNoteIndex % hiddenMessages.length]);
+        this.remove();
+        hiddenNoteIndex++;
+        setTimeout(spawnNextNote, 2000);
+      };
+      
+      document.body.appendChild(note);
+    }
+
     function startHiddenNotes() {
-      for (let i = 0; i < 30; i++) {
-        setTimeout(() => {
-          const note = document.createElement('i');
-          note.className = 'fas fa-envelope hidden-note-icon';
-          note.style.left = Math.random() * 90 + 5 + '%';
-          note.style.top = Math.random() * 90 + 5 + '%';
-          note.onclick = function() {
-            alert("💌 " + hiddenMessages[i % hiddenMessages.length]);
-            this.style.display = 'none';
-          };
-          document.body.appendChild(note);
-        }, Math.random() * 60000); // Randomly over 1 minute
-      }
+      setTimeout(spawnNextNote, 3000);
     }
 
     // ===== TRUST METER LOGIC =====
