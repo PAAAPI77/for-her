@@ -828,15 +828,6 @@
       .three-col-affirm { columns: 1; }
     }
 
-    /* Mood-based themes - day/night cycle */
-    .day-theme {
-      background: #fefaf7;
-    }
-    .night-theme {
-      background: #2a1e1e;
-      color: #ffe8e8;
-    }
-
     /* Magic Mirror */
     .magic-mirror {
       background: linear-gradient(145deg, #fff0eb, #ffe1d9);
@@ -3826,21 +3817,6 @@
         });
       });
     }
-
-    // ===== DAY/NIGHT CYCLE =====
-    function setThemeBasedOnTime() {
-      const hour = new Date().getHours();
-      const body = document.body;
-      if (hour >= 19 || hour < 6) {
-        body.classList.add('night-theme');
-        body.classList.remove('day-theme');
-      } else {
-        body.classList.add('day-theme');
-        body.classList.remove('night-theme');
-      }
-    }
-    setThemeBasedOnTime();
-    setInterval(setThemeBasedOnTime, 60000);
 
     // ===== VIRTUAL HUG =====
     window.triggerVirtualHug = function() {
