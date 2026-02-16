@@ -1410,6 +1410,47 @@
       font-size: 1.25rem;
       border-left: 8px solid #aed581;
     }
+    
+    /* Therapy Tips Cards */
+    .therapy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .therapy-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-top: 5px solid #aed581;
+    }
+    .therapy-card h4 {
+      color: #558b2f;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    .therapy-card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .therapy-card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .therapy-card li::before {
+      content: "🌿";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 0.9rem;
+    }
+    
+    /* Worry Release Box */
+    .worry-box {
+      transition: all 1s ease;
+    }
   </style>
 </head>
 <body>
@@ -2507,6 +2548,53 @@
           <p style="margin-bottom: 1.5rem;">When we hurt, our instinct is to protect ourselves by pulling away. But I am asking you to stay. Stay in the discomfort with me until it turns into understanding. I promise to listen to your pain without defensiveness. I promise to validate your feelings.</p>
           <p>We are on the same team. Always. No matter what happened, it is solvable because our love is bigger than any mistake. I love you, I value you, and I am here to fix this.</p>
         </div>
+
+        <!-- NEW INTERACTIVE THERAPY SECTION -->
+        <div class="therapy-grid">
+          <!-- For Her -->
+          <div class="therapy-card">
+            <h4><i class="fas fa-female"></i> For You, My Love</h4>
+            <ul>
+              <li><strong>Feel your feelings:</strong> It's okay to be angry or sad. Your emotions are valid data, not commands.</li>
+              <li><strong>Self-Soothing:</strong> When overwhelmed, place a hand on your heart and take 3 deep breaths. Remind yourself: "I am safe."</li>
+              <li><strong>Voice your needs:</strong> Use "I need" statements. "I need reassurance," "I need space," "I need a hug." I will listen.</li>
+              <li><strong>Remember my intent:</strong> Even when I mess up, my intention is never to hurt you. I love you.</li>
+            </ul>
+          </div>
+
+          <!-- For Him (You) -->
+          <div class="therapy-card">
+            <h4><i class="fas fa-male"></i> For Me (Sahil)</h4>
+            <ul>
+              <li><strong>Listen to understand:</strong> Not to reply. Validate her pain before explaining my side.</li>
+              <li><strong>Patience is love:</strong> Healing has no deadline. I will wait as long as it takes.</li>
+              <li><strong>Consistency:</strong> Show up for her in small ways every single day. Trust is built in drops.</li>
+              <li><strong>Check my ego:</strong> Being "right" is less important than being connected.</li>
+            </ul>
+          </div>
+
+          <!-- For Us -->
+          <div class="therapy-card">
+            <h4><i class="fas fa-heart"></i> For Us (Together)</h4>
+            <ul>
+              <li><strong>Us vs. The Problem:</strong> It's never "Me vs. You." It's "Us vs. The Issue."</li>
+              <li><strong>The Pause Button:</strong> If an argument gets too hot, we say "Pause" and come back in 20 mins when calm.</li>
+              <li><strong>Repair Attempts:</strong> Accept small gestures of peace (a joke, a touch) during conflict.</li>
+              <li><strong>Never go to bed angry:</strong> Or at least, never go to bed without saying "I love you."</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Worry Release -->
+        <div style="margin-top: 3rem; text-align: center;">
+          <h3><i class="fas fa-wind"></i> worry release box</h3>
+          <p style="margin-bottom: 1rem;">Type a worry or fear below, then click release to let it go into the universe.</p>
+          <div style="position: relative; max-width: 500px; margin: 0 auto;">
+            <textarea id="worryInput" class="message-area" style="min-height: 100px; border-color: #b2dfdb;" placeholder="I am worried about..."></textarea>
+            <button class="menu-btn" onclick="releaseWorry()" style="background: #b2dfdb; color: #00695c; margin: 0 auto;"><i class="fas fa-paper-plane"></i> Release it</button>
+          </div>
+          <div id="worryMessage" style="height: 2rem; margin-top: 1rem; color: #00695c; font-weight: bold;"></div>
+        </div>
       </div>
 
       <!-- THINGS I WILL ALWAYS DO PAGE -->
@@ -2528,8 +2616,16 @@
             <strong>I will never let go.</strong> Whatever happened in the past, whatever misunderstandings we had, they are small compared to the love we share. Everything is solvable if we approach it with love, help, and understanding. I am committed to solving every puzzle, fixing every crack, and healing every wound.
           </p>
 
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I will always wait for you.</strong> I know healing has its own timeline. I am not asking you to rush. Take your time, my love. Take days, take weeks, take whatever you need to feel safe again. I am not going anywhere. I am standing right here, planting roots, waiting for the season when you are ready to bloom with me again.
+          </p>
+
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I will always work on myself.</strong> I am not perfect, but for you, I am striving to be. I am learning to be more patient, more gentle, more understanding. I am reading, I am reflecting, and I am changing—not just to keep you, but to be worthy of you.
+          </p>
+
           <p style="font-size: 1.25rem;">
-            I really, truly love you. I value this relationship more than my pride, more than my comfort. You are my person, and I will always fight for you, never against you.
+            I really, truly love you. I value this relationship more than my pride, more than my comfort. You are my person, and I will always fight for you, never against you. Please, when you are ready, look at me and see the devotion in my eyes.
           </p>
         </div>
       </div>
@@ -2551,6 +2647,14 @@
           
           <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
             I value you a lot. You are not just my girlfriend; you are my best friend, my confidant, my future. I see your worth clearly, and I treat it with the reverence it deserves.
+          </p>
+
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>I am never giving up on you.</strong> Even if you push me away, I will stay within reach. Even if you are angry, I will offer peace. I know trust is fragile, and I am willing to rebuild it brick by brick.
+          </p>
+
+          <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+            <strong>Please try to accept me.</strong> I know it's hard. I know the past lingers. But I am asking you to look at who I am <em>today</em>. I am asking you to give this new version of me a chance to love you the way you've always wanted. I am here, heart open, hands ready to hold yours.
           </p>
 
           <p style="font-size: 1.25rem;">
@@ -3227,7 +3331,115 @@
 
     // ===== BUCKET LIST LOGIC =====
     function loadBucketList() {
-      const list = JSON.parse(localStorage.getItem('adi_bucket_list')) || [];
+      let list = JSON.parse(localStorage.getItem('adi_bucket_list'));
+      
+      // Initialize with 100 items if empty
+      if (!list || list.length === 0) {
+        list = [
+          { text: "Watch the Northern Lights together", completed: false },
+          { text: "Cook a full 3-course meal together", completed: false },
+          { text: "Go on a spontaneous road trip", completed: false },
+          { text: "Build a blanket fort and watch movies all day", completed: false },
+          { text: "Write letters to our future selves", completed: false },
+          { text: "Have a picnic in a park at sunset", completed: false },
+          { text: "Go stargazing away from the city lights", completed: false },
+          { text: "Adopt a pet together", completed: false },
+          { text: "Visit Paris and kiss under the Eiffel Tower", completed: false },
+          { text: "Take a pottery class together", completed: false },
+          { text: "Go to a lantern festival", completed: false },
+          { text: "Have a tech-free weekend", completed: false },
+          { text: "Recreate our first date", completed: false },
+          { text: "Slow dance in the kitchen at 2 AM", completed: false },
+          { text: "Go camping and roast marshmallows", completed: false },
+          { text: "Visit a vineyard and taste wines", completed: false },
+          { text: "Take a hot air balloon ride", completed: false },
+          { text: "Bake cookies from scratch", completed: false },
+          { text: "Read a book to each other", completed: false },
+          { text: "Go ice skating (and hold hands so we don't fall)", completed: false },
+          { text: "Watch the sunrise on a beach", completed: false },
+          { text: "Plant a garden together", completed: false },
+          { text: "Go to a drive-in movie theater", completed: false },
+          { text: "Make a scrapbook of our memories", completed: false },
+          { text: "Learn a new language together", completed: false },
+          { text: "Go snorkeling or scuba diving", completed: false },
+          { text: "Have a pillow fight", completed: false },
+          { text: "Visit a castle", completed: false },
+          { text: "Go on a boat ride", completed: false },
+          { text: "Make homemade pizza", completed: false },
+          { text: "Go to a music festival", completed: false },
+          { text: "Visit a botanical garden", completed: false },
+          { text: "Have a spa day at home", completed: false },
+          { text: "Go hiking to a waterfall", completed: false },
+          { text: "Ride a Ferris wheel", completed: false },
+          { text: "Make a time capsule", completed: false },
+          { text: "Go to a comedy club", completed: false },
+          { text: "Take funny photo booth pictures", completed: false },
+          { text: "Kiss in the rain", completed: false },
+          { text: "Go to an aquarium", completed: false },
+          { text: "Have a candlelight dinner at home", completed: false },
+          { text: "Visit a museum", completed: false },
+          { text: "Go bowling", completed: false },
+          { text: "Play video games together all night", completed: false },
+          { text: "Go fruit picking", completed: false },
+          { text: "Make breakfast in bed for each other", completed: false },
+          { text: "Go to a carnival and win a prize", completed: false },
+          { text: "Walk through a Christmas market", completed: false },
+          { text: "Carve pumpkins for Halloween", completed: false },
+          { text: "Dye Easter eggs", completed: false },
+          { text: "Go to a zoo", completed: false },
+          { text: "Take a cooking class", completed: false },
+          { text: "Go kayaking", completed: false },
+          { text: "Watch fireworks together", completed: false },
+          { text: "Go to a karaoke bar and sing a duet", completed: false },
+          { text: "Visit a national park", completed: false },
+          { text: "Go horseback riding", completed: false },
+          { text: "Make s'mores over a fire", completed: false },
+          { text: "Go to a planetarium", completed: false },
+          { text: "Take a painting class", completed: false },
+          { text: "Go to a jazz club", completed: false },
+          { text: "Visit a lighthouse", completed: false },
+          { text: "Go to a rooftop bar", completed: false },
+          { text: "Take a train trip somewhere new", completed: false },
+          { text: "Go to a sunflower field", completed: false },
+          { text: "Make a playlist for each other", completed: false },
+          { text: "Go to a flea market", completed: false },
+          { text: "Have a water balloon fight", completed: false },
+          { text: "Go to a poetry slam", completed: false },
+          { text: "Visit a butterfly sanctuary", completed: false },
+          { text: "Go to a chocolate factory", completed: false },
+          { text: "Take a dance class (salsa or ballroom)", completed: false },
+          { text: "Go to a tea room", completed: false },
+          { text: "Visit a cave", completed: false },
+          { text: "Go to a magic show", completed: false },
+          { text: "Take a helicopter ride", completed: false },
+          { text: "Go to a circus", completed: false },
+          { text: "Visit a temple or cathedral", completed: false },
+          { text: "Go to a street food festival", completed: false },
+          { text: "Make a gingerbread house", completed: false },
+          { text: "Go to a pumpkin patch", completed: false },
+          { text: "Visit an art gallery", completed: false },
+          { text: "Go to a science center", completed: false },
+          { text: "Take a yoga class together", completed: false },
+          { text: "Go to a book signing", completed: false },
+          { text: "Visit a historical site", completed: false },
+          { text: "Go to a trampoline park", completed: false },
+          { text: "Make tie-dye shirts", completed: false },
+          { text: "Go to a bingo night", completed: false },
+          { text: "Visit a farm", completed: false },
+          { text: "Go to a trivia night", completed: false },
+          { text: "Make homemade ice cream", completed: false },
+          { text: "Go to a poetry reading", completed: false },
+          { text: "Visit a sculpture park", completed: false },
+          { text: "Go to a silent disco", completed: false },
+          { text: "Make a vision board for our future", completed: false },
+          { text: "Go to a stand-up comedy show", completed: false },
+          { text: "Visit a wax museum", completed: false },
+          { text: "Go to a laser tag arena", completed: false },
+          { text: "Grow old together", completed: false }
+        ];
+        localStorage.setItem('adi_bucket_list', JSON.stringify(list));
+      }
+
       const container = document.getElementById('bucketListContainer');
       if (!container) return;
       container.innerHTML = '';
@@ -3272,6 +3484,23 @@
       list.splice(index, 1);
       localStorage.setItem('adi_bucket_list', JSON.stringify(list));
       loadBucketList();
+    };
+
+    // ===== WORRY RELEASE =====
+    window.releaseWorry = function() {
+      const input = document.getElementById('worryInput');
+      const msg = document.getElementById('worryMessage');
+      if (input.value.trim() === "") return;
+      
+      input.style.opacity = '0';
+      input.style.transform = 'translateY(-20px)';
+      msg.innerHTML = "✨ Your worry has been released. You are lighter now. ✨";
+      setTimeout(() => {
+        input.value = "";
+        input.style.opacity = '1';
+        input.style.transform = 'translateY(0)';
+        msg.innerHTML = "";
+      }, 3000);
     };
   </script>
 
